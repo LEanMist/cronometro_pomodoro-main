@@ -1,0 +1,13 @@
+    // & - Intersection Type, o componente aceita:
+    // propriedades obrigatórias (id e labelText)
+    // TODAS as propriedades padrão que um elemento <input> nativo HTML aceita
+    // (value , on Change, disabel, placeholder, step, etc.)
+    // ; Aceita por causa do React.Component <'input'>
+
+    // ... = spread operator (espalhamento, rest parameters)
+    // Qual é o papel de ... 
+    // no argumento ele funciona como rest, informa ao react "pega todas as
+    // propriedades que sobram (que não são id, type ou labelText)" e coloque 
+    // dentro  de um objeto de rest no elemento <input> 
+    // 
+    //
