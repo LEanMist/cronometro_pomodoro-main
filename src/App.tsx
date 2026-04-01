@@ -5,11 +5,8 @@ import {Container} from './components/Container';
 import {Logo} from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
-import { DefaultInput } from './components/DefaultInput';
-import { Cycles } from './components/Cycles';
-import { DefaultButton } from './components/DefaultButton';
-import { CirclePlay, CircleStop } from 'lucide-react';
 import { Footer } from './components/Footer';
+import { MainTemplates } from './Templates/MainTemplates/index.tsx';
 import { useState } from 'react';
 
 export function App(){
@@ -22,6 +19,11 @@ export function App(){
 
   return(
     <>
+      <Heading>
+        <Container>
+          <MainTemplates> ola do Main Template filho </MainTemplates>
+        </Container>
+      </Heading>
       <Heading>
         Número: <span>{numero}</span>
       </Heading>
@@ -37,29 +39,6 @@ export function App(){
         
       <Container>
         <CountDown/>
-      </Container>
-
-      <Container>
-        <form className="form" action= "">
-
-          <div>
-            
-          </div>
-          <div className='formRow'>
-            <DefaultInput 
-            id = 'meuInput'
-            type ='text'
-            labelText= {numero.toString()}
-            placeholder = 'digite algo' />
-          </div>
-          <div className='formRow'>
-            <Cycles />
-          </div>
-          <div className='formRow'>
-          <DefaultButton icon = {<CirclePlay/>}color = 'green' />
-          <DefaultButton icon = {<CircleStop/>} color= "red"/>
-          </div>
-        </form>
       </Container>
 
       <Container>

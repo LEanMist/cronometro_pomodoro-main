@@ -5,7 +5,16 @@ import { useEffect, useState } from 'react';
 type AvaliableThemes = 'dark' | 'light';
 export function Menu() {
   //aqui farei meu hook interação com função aqui
-  const [theme,setTheme] = useState<AvaliableThemes>('dark');
+  const [theme,setTheme] = useState<AvaliableThemes>(()=>{
+    const storageTheme = (localStorage.getItem('theme') as AvaliableThemes || 'dark');
+    return storageTheme;
+  });
+
+  const nextThemeIcon = {
+    dark: <SunIcon/>,
+    light: <MoonIcon/>
+  }
+
   function handleThemeChange(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) 
   {
     event.preventDefault();
@@ -17,11 +26,9 @@ export function Menu() {
 
   useEffect(()=>{
     document.documentElement.setAttribute('data-theme', theme)
-    return ()=>{
-      console.log('o coponente esta atualizado', Date.now());
-    };
-  }, [theme]);
-
+    localStorage.setItem('theme', theme);
+  },[theme]);
+    
   return (
     <>
       <nav className = {styles.menu}>
@@ -48,9 +55,9 @@ export function Menu() {
         arial-label="Mudar tema"
         title="Mudar tema"
         onClick = {handleThemeChange}
-        >{theme === 'light' ? <MoonIcon/> : <SunIcon/>} 
+        >{nextThemeIcon[theme]} 
         </a>
       </nav>
     </>
   );
-}
+};
